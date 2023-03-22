@@ -2,30 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maintenance Requests</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://yourusername.github.io/maintenance-request/style.css">
 </head>
 <body>
     <h1>Maintenance Requests</h1>
     <button id="new-request-btn">New Request</button>
     <div id="new-request-form" style="display: none;">
-        <label for="location">Location:</label>
-        <input type="text" id="location" required>
-        <br>
-        <label for="room">Room #:</label>
-        <input type="text" id="room" required>
-        <br>
-        <label for="staff">Staff Name:</label>
-        <input type="text" id="staff" required>
-        <br>
-        <label for="date">Date Requested:</label>
-        <input type="date" id="date" required>
-        <br>
-        <label for="description">Description:</label>
-        <textarea id="description" required></textarea>
-        <br>
-        <button id="submit-btn">Submit</button>
+        <form id="maintenance-request-form" action="https://sheets.googleapis.com/v4/spreadsheets/SPREADSHEET_ID/values/Sheet1!A1:E1:append?valueInputOption=USER_ENTERED" method="POST">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="Location" required>
+            <br>
+            <label for="room">Room #:</label>
+            <input type="text" id="room" name="Room" required>
+            <br>
+            <label for="staff">Staff Name:</label>
+            <input type="text" id="staff" name="Staff" required>
+            <br>
+            <label for="date">Date Requested:</label>
+            <input type="date" id="date" name="Date Requested" required>
+            <br>
+            <label for="description">Description:</label>
+            <textarea id="description" name="Description" required></textarea>
+            <br>
+            <button type="submit" id="submit-btn">Submit</button>
+        </form>
     </div>
     <table id="requests-table">
         <thead>
@@ -41,6 +42,6 @@
         <tbody id="requests-list">
         </tbody>
     </table>
-    <script src="script.js"></script>
+    <script src="https://yourusername.github.io/maintenance-request/script.js"></script>
 </body>
 </html>
