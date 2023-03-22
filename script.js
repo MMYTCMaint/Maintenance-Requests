@@ -1,5 +1,5 @@
 const CLIENT_ID = '164604608036-2m8htu36kk90g66dfd342fe0aavh0ugs.apps.googleusercontent.com';
-const REDIRECT_URI = 'https://yourusername.github.io/maintenance-request/callback.html';
+const REDIRECT_URI = 'https://MMYTCMaint.github.io/Maintenance-Requests/callback.html';
 
 // Show/hide new request form
 document.getElementById('new-request-btn').addEventListener('click', () => {
