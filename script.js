@@ -1,3 +1,6 @@
+const CLIENT_ID = '164604608036-2m8htu36kk90g66dfd342fe0aavh0ugs.apps.googleusercontent.com';
+const REDIRECT_URI = 'https://yourusername.github.io/maintenance-request/callback.html';
+
 // Show/hide new request form
 document.getElementById('new-request-btn').addEventListener('click', () => {
   const form = document.getElementById('new-request-form');
@@ -5,13 +8,14 @@ document.getElementById('new-request-btn').addEventListener('click', () => {
 });
 
 // Add new maintenance request
-document.getElementById('submit-btn').addEventListener('click', () => {
-  const location = document.getElementById('location').value;
-  const room = document.getElementById('room').value;
-  const staff = document.getElementById('staff').value;
-  const date = document.getElementById('date').value;
-  const description = document.getElementById('description').value;
-  addRequest(location, room, staff, date, description);
+document.getElementById('maintenance-request-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const values = {};
+  formData.forEach((value, key) => {
+    values[key] = value;
+  });
+  addRequest(values.Location, values.Room, values.Staff, values['Date Requested'], values.Description);
 });
 
 // Toggle request status between complete and incomplete
