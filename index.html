@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Requests</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Maintenance Requests</h1>
+    <button id="new-request-btn">New Request</button>
+    <div id="new-request-form" style="display: none;">
+        <label for="location">Location:</label>
+        <input type="text" id="location" required>
+        <br>
+        <label for="room">Room #:</label>
+        <input type="text" id="room" required>
+        <br>
+        <label for="staff">Staff Name:</label>
+        <input type="text" id="staff" required>
+        <br>
+        <label for="date">Date Requested:</label>
+        <input type="date" id="date" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" required></textarea>
+        <br>
+        <button id="submit-btn">Submit</button>
+    </div>
+    <table id="requests-table">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Room #</th>
+                <th>Staff Name</th>
+                <th>Date Requested</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="requests-list">
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
