@@ -1,33 +1,26 @@
+// Firebase configuration details
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_AUTH_DOMAIN",
   projectId: "YOUR_PROJECT_ID",
   storageBucket: "YOUR_STORAGE_BUCKET",
   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  appId: "YOUR_APP_ID",
+  measurementId: "YOUR_MEASUREMENT_ID"
 };
 
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 // Show/hide new request form
 document.getElementById('new-request-btn').addEventListener('click', () => {
-  const user = firebase.auth().currentUser;
-  if (user) {
-    const form = document.getElementById('new-request-form');
-    form.style.display = form.style.display === 'none' ? 'block' : 'none';
-  } else {
-    alert('Please log in to submit a maintenance request.');
-  }
+  const form = document.getElementById('new-request-form');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
 });
 
 // Add new maintenance request
 document.getElementById('maintenance-request-form').addEventListener('submit', (event) => {
   event.preventDefault();
-  const user = firebase.auth().currentUser;
-  if (!user) {
-    alert('Please log in to submit a maintenance request.');
-    return;
-  }
   const formData = new FormData(event.target);
   const values = {};
   formData.forEach((value, key) => {
@@ -76,15 +69,23 @@ function addRequest(location, room, staff, date, description) {
   requestsList.appendChild(newRow);
 }
 
-// Handle user authentication state changes
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    // User is signed in.
-    console.log('User is signed in.');
-  } else {
-    // User is signed out.
-    console.log('User is signed out.');
-    // Redirect the user to the login page
-    window.location.href = 'https://yourdomain.com/login.html';
-  }
+// Listen for form submit and authenticate user
+document.getElementById('login-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // User is signed in.
+      const user = userCredential.user;
+      // Redirect the user to the main page
+      window.location.href = 'https://yourdomain.com/main.html';
+    })
+    .catch((error) => {
+      // Handle errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert('Invalid email or password');
+    });
 });
