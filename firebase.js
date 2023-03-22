@@ -12,8 +12,8 @@ const firebaseConfig = {
   projectId: "maintenance-request-d98ba",
   storageBucket: "maintenance-request-d98ba.appspot.com",
   messagingSenderId: "573805910976",
-  appId: "1:573805910976:web:e08358db39a0379aec4625",
-  measurementId: "G-6TX3D53K3Z"
+  appId: "1:573805910976:web:1818d07cb267b91dec4625",
+  measurementId: "G-GVC1QK1E1P"
 };
 
 // Initialize Firebase
