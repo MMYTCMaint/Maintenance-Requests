@@ -1,11 +1,6 @@
 // Your Firebase configuration details
 const firebaseConfig = {
-  apiKey: "AIzaSyA4AHWrHdytdhRCJT48hZKuvfnhmnwOVxs",
-  authDomain: "maintenance-request-d98ba.firebaseapp.com",
-  projectId: "maintenance-request-d98ba",
-  storageBucket: "maintenance-request-d98ba.appspot.com",
-  messagingSenderId: "573805910976",
-  appId: "1:573805910976:web:1818d07cb267b91dec4625"
+  // ...
 };
 
 // Initialize Firebase
@@ -38,23 +33,17 @@ document.getElementById('requests-list').addEventListener('click', (event) => {
 // Authenticate user on form submit
 document.getElementById('login-form').addEventListener('submit', (event) => {
   event.preventDefault();
-  const email = document.getElementById('email').value;
+  const emailInput = document.getElementById('email');
+  const email = emailInput.value;
+
+  if (!emailInput.checkValidity()) {
+    alert('Invalid email address. Please enter an email in the format of firstname.lastname@mmytc.com.');
+    return;
+  }
+
   const password = document.getElementById('password').value;
-  
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // User is signed in.
-      const user = userCredential.user;
-      // Show the requests table
-      document.getElementById('requests-table').style.display = 'block';
-      // Hide the login form
-      document.getElementById('login-form').style.display = 'none';
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert('Invalid email or password');
-    });
+
+  // TODO: Implement your login logic here
 });
 
 function toggleRequestStatus(button) {
