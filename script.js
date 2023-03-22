@@ -1,12 +1,11 @@
-// Firebase configuration details
+// Your Firebase configuration details
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_AUTH_DOMAIN",
   projectId: "YOUR_PROJECT_ID",
   storageBucket: "YOUR_STORAGE_BUCKET",
   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID"
+  appId: "YOUR_APP_ID"
 };
 
 // Initialize Firebase
@@ -34,6 +33,28 @@ document.getElementById('requests-list').addEventListener('click', (event) => {
   if (event.target.classList.contains('status-btn')) {
     toggleRequestStatus(event.target);
   }
+});
+
+// Authenticate user on form submit
+document.getElementById('login-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // User is signed in.
+      const user = userCredential.user;
+      // Show the requests table
+      document.getElementById('requests-table').style.display = 'block';
+      // Hide the login form
+      document.getElementById('login-form').style.display = 'none';
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert('Invalid email or password');
+    });
 });
 
 function toggleRequestStatus(button) {
@@ -68,24 +89,3 @@ function addRequest(location, room, staff, date, description) {
   const requestsList = document.getElementById('requests-list');
   requestsList.appendChild(newRow);
 }
-
-// Listen for form submit and authenticate user
-document.getElementById('login-form').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // User is signed in.
-      const user = userCredential.user;
-      // Redirect the user to the main page
-      window.location.href = 'https://yourdomain.com/main.html';
-    })
-    .catch((error) => {
-      // Handle errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert('Invalid email or password');
-    });
-});
