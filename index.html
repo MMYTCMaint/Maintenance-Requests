@@ -1,47 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
-    <title>Maintenance Requests</title>
-    <link rel="stylesheet" href="https://MMYTCMaint.github.io/maintenance-request/style.css">
-</head>
-<body>
-    <h1>Maintenance Requests</h1>
-    <button id="new-request-btn">New Request</button>
+    <title>Maintenance Request Page</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Maintenance Request Page</h1>
+      <button id="new-request-btn">New Request</button>
+    </header>
     <div id="new-request-form" style="display: none;">
-        <form id="maintenance-request-form" action="https://sheets.googleapis.com/v4/spreadsheets/SPREADSHEET_ID/values/Sheet1!A1:E1:append?valueInputOption=USER_ENTERED" method="POST">
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="Location" required>
-            <br>
-            <label for="room">Room #:</label>
-            <input type="text" id="room" name="Room" required>
-            <br>
-            <label for="staff">Staff Name:</label>
-            <input type="text" id="staff" name="Staff" required>
-            <br>
-            <label for="date">Date Requested:</label>
-            <input type="date" id="date" name="Date Requested" required>
-            <br>
-            <label for="description">Description:</label>
-            <textarea id="description" name="Description" required></textarea>
-            <br>
-            <button type="submit" id="submit-btn">Submit</button>
-        </form>
+      <form id="maintenance-request-form">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="Location"><br>
+
+        <label for="room">Room Number:</label>
+        <input type="text" id="room" name="Room"><br>
+
+        <label for="staff">Staff Name:</label>
+        <input type="text" id="staff" name="Staff"><br>
+
+        <label for="date-requested">Date Requested:</label>
+        <input type="date" id="date-requested" name="Date Requested"><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="Description" rows="4" cols="50"></textarea><br>
+
+        <input type="submit" value="Submit">
+      </form>
     </div>
-    <table id="requests-table">
+    <div id="requests-table" style="display: none;">
+      <table>
         <thead>
-            <tr>
-                <th>Location</th>
-                <th>Room #</th>
-                <th>Staff Name</th>
-                <th>Date Requested</th>
-                <th>Description</th>
-                <th>Status</th>
-            </tr>
+          <tr>
+            <th>Location</th>
+            <th>Room Number</th>
+            <th>Staff Name</th>
+            <th>Date Requested</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
         </thead>
         <tbody id="requests-list">
         </tbody>
-    </table>
-    <script src="https://MMYTCMaint.github.io/maintenance-request/script.js"></script>
-</body>
+      </table>
+    </div>
+    <div id="login-form">
+      <h2>Login</h2>
+      <form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="firebase.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
