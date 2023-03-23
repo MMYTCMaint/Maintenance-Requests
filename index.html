@@ -1,55 +1,69 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Maintenance Request Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Request Site</title>
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header>
-      <h1>Maintenance Request Page</h1>
-      <button id="new-request-button">New Request</button>
-    </header>
-    <div id="maintenance-request-form" style="display: none;">
-      <form>
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="Location"><br>
-
-        <label for="room">Room Number:</label>
-        <input type="text" id="room" name="Room"><br>
-
-        <label for="staff">Staff Name:</label>
-        <input type="text" id="staff" name="Staff"><br>
-
-        <label for="date-requested">Date Requested:</label>
-        <input type="date" id="date-requested" name="Date Requested"><br>
-
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="Description" rows="4" cols="50"></textarea><br>
-
-        <input type="submit" value="Submit">
-      </form>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div id="login">
+        <h1>Login</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
     </div>
-    <div id="requests-table" style="display: none;">
-      <table>
-        <thead>
-          <tr>
-            <th>Location</th>
-            <th>Room Number</th>
-            <th>Staff Name</th>
-            <th>Date Requested</th>
-            <th>Description</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="requests-list">
-        </tbody>
-      </table>
+
+    <div id="home" style="display: none;">
+        <h1>Maintenance Requests</h1>
+        <table id="requests">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Room</th>
+                    <th>Staff</th>
+                    <th>Date Requested</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="requests-body">
+                <!-- Maintenance request data will be populated here by JavaScript -->
+            </tbody>
+        </table>
+        <button id="new-request">New Request</button>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="firebase.js"></script>
-    <script src="script.js"></script>
-  </body>
+
+    <div id="form-container" style="display: none;">
+        <h1>New Maintenance Request</h1>
+        <form id="request-form">
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location">
+            </div>
+            <div class="form-group">
+                <label for="room">Room:</label>
+                <input type="text" id="room" name="room">
+            </div>
+            <div class="form-group">
+                <label for="staff">Staff:</label>
+                <input type="text" id="staff" name="staff">
+            </div>
+            <div class="form-group">
+                <label for="date">Date Requested:</label>
+                <input type="date" id="date" name="date">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+            <button type="button" id="cancel-request">Cancel</button>
+        </form>
+    </div>
+</body>
 </html>
-
