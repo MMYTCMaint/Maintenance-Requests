@@ -74,3 +74,4 @@ async function saveToGoogleSheet(data) {
     alert(errorMessage);
   }
 }
+
