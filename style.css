@@ -1,31 +1,83 @@
 body {
-  font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+h1 {
+    text-align: center;
 }
 
-th,
-td {
-  padding: 10px;
-  border: 1px solid black;
+/* Login page */
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-.status-incomplete {
-  background-color: red;
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.status-complete {
-  background-color: green;
+#login-form input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 200px;
+    border: 1px solid #ccc;
 }
 
-#maintenance-request-form {
-  display: none;
+#login-form button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }
 
-#error-message {
-  color: red;
-  font-weight: bold;
+/* Home page */
+#home {
+    padding: 20px;
+}
+
+#requests {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#requests th {
+    text-align: left;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+}
+
+#requests td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#requests td:last-child {
+    text-align: center;
+}
+
+#requests .complete {
+    color: green;
+}
+
+#requests .incomplete {
+    color: red;
+}
+
+#new-request {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }
