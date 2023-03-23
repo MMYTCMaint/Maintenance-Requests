@@ -136,4 +136,3 @@ try {
   const errorMessage = `There was an error submitting your request. Please try again later.`;
   alert(errorMessage);
 }
-
