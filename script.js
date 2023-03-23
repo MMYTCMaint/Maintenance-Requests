@@ -4,7 +4,7 @@ const sheetId = '1L-lDxOZR6l0b4J4O1Aqb3qyU6cL-6SdU6OeN3qztNxo'; // Replace this 
 const sheetName = 'MaintenanceRequests';
 
 // Add listener to handle the "New Request" button click
-document.getElementById('new-request-button').addEventListener('click', () => {
+document.getElementById('New-Request-button').addEventListener('click', () => {
   document.getElementById('maintenance-request-form').style.display = 'block';
 });
 
