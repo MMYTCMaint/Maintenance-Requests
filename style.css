@@ -19,3 +19,12 @@ th, td {
 .status-complete {
     background-color: green;
 }
+
+#new-request-form {
+    display: none;
+}
+
+#error-message {
+    color: red;
+    font-weight: bold;
+}
